@@ -17,11 +17,18 @@ import { useUser } from "../../hooks/useUser";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { user } = useUser();
+  const { user, login } = useUser();
+  const [error, setError] = useState(null);
 
-  function handleSubmit() {
-    console.log("Login form submitted", { email, password });
-    console.log("current user", user);
+  async function handleSubmit() {
+    setError(null);
+
+    try {
+      await login(email, password);
+      console.log("Current user:", user);
+    } catch (error) {
+      setError(error.message);
+    }
   }
 
   return (
@@ -50,11 +57,12 @@ export default function Login() {
         <ThemedButton onPress={handleSubmit}>
           <Text style={{ color: "#f2f2f2" }}>Login</Text>
         </ThemedButton>
+        <Spacer />
+
+        {error && <Text style={styles.error}>{error}</Text>}
+
         <Spacer height={100} />
         <Link href="/register">
-          <ThemedText style={{ textAlign: "center" }}>Register</ThemedText>
-        </Link>
-        <Link href="/">
           <ThemedText style={{ textAlign: "center" }}>Register</ThemedText>
         </Link>
       </ThemedView>
@@ -81,5 +89,14 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.8,
+  },
+  error: {
+    color: Colors.warning,
+    padding: 10,
+    backgroundColor: "#f5c1c8",
+    borderColor: Colors.warning,
+    borderWidth: 1,
+    borderRadius: 6,
+    marginHorizontal: 10,
   },
 });
