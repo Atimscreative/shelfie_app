@@ -1,4 +1,9 @@
-import { StyleSheet, Text } from "react-native";
+import {
+  Keyboard,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+} from "react-native";
 import Spacer from "../../components/Spacer";
 import ThemedText from "../../components/ThemedText";
 import ThemedView from "../../components/ThemedView";
@@ -16,38 +21,40 @@ export default function Register() {
   }
 
   return (
-    <ThemedView style={styles.container}>
-      <Spacer />
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <ThemedView style={styles.container}>
+        <Spacer />
 
-      <ThemedText title={true} style={styles.title}>
-        Register your Account
-      </ThemedText>
+        <ThemedText title={true} style={styles.title}>
+          Register your Account
+        </ThemedText>
 
-      <ThemedTextInput
-        placeholder="Email"
-        style={{ width: "80%", marginBottom: 30 }}
-        keyboardType="email-address"
-        value={email}
-        onChangeText={(text) => setEmail(text)}
-      />
-      <ThemedTextInput
-        placeholder="Password"
-        style={{ width: "80%", marginBottom: 30 }}
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
+        <ThemedTextInput
+          placeholder="Email"
+          style={{ width: "80%", marginBottom: 30 }}
+          keyboardType="email-address"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+        />
+        <ThemedTextInput
+          placeholder="Password"
+          style={{ width: "80%", marginBottom: 30 }}
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+        />
 
-      <ThemedButton onPress={handleSubmit}>
-        <Text style={{ color: "#f2f2f2" }}>Register</Text>
-      </ThemedButton>
+        <ThemedButton onPress={handleSubmit}>
+          <Text style={{ color: "#f2f2f2" }}>Register</Text>
+        </ThemedButton>
 
-      <Spacer height={100} />
+        <Spacer height={100} />
 
-      <Link href="/login">
-        <ThemedText style={{ textAlign: "center" }}>login</ThemedText>
-      </Link>
-    </ThemedView>
+        <Link href="/login">
+          <ThemedText style={{ textAlign: "center" }}>login</ThemedText>
+        </Link>
+      </ThemedView>
+    </TouchableWithoutFeedback>
   );
 }
 
