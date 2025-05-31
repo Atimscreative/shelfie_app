@@ -6,8 +6,8 @@ import ThemedText from "../../components/ThemedText";
 
 const Books = () => {
   return (
-    <ThemedView style={styles.container}>
-      <Spacer />
+    <ThemedView safe={true} style={styles.container}>
+      {/* <Spacer /> */}
       <ThemedText title={true} style={styles.heading}>
         Your Reading List
       </ThemedText>
@@ -20,7 +20,7 @@ export default Books;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "stretch",
   },
   heading: {

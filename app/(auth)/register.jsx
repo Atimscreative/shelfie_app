@@ -4,10 +4,15 @@ import ThemedText from "../../components/ThemedText";
 import ThemedView from "../../components/ThemedView";
 import { Link } from "expo-router";
 import ThemedButton from "../../components/ThemedButton";
+import ThemedTextInput from "../../components/ThemedTextInput";
+import { useState } from "react";
 
 export default function Register() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   function handleSubmit() {
-    console.log("Register form submitted");
+    console.log("Register form submitted", { email, password });
   }
 
   return (
@@ -17,6 +22,21 @@ export default function Register() {
       <ThemedText title={true} style={styles.title}>
         Register your Account
       </ThemedText>
+
+      <ThemedTextInput
+        placeholder="Email"
+        style={{ width: "80%", marginBottom: 30 }}
+        keyboardType="email-address"
+        value={email}
+        onChangeText={(text) => setEmail(text)}
+      />
+      <ThemedTextInput
+        placeholder="Password"
+        style={{ width: "80%", marginBottom: 30 }}
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+      />
 
       <ThemedButton onPress={handleSubmit}>
         <Text style={{ color: "#f2f2f2" }}>Register</Text>
@@ -39,7 +59,7 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: "center",
-    fontSize: "18",
+    fontSize: 18,
     fontWeight: "bold",
     marginBottom: 30,
   },
