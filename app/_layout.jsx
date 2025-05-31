@@ -17,7 +17,6 @@ const RootLayout = () => {
         screenOptions={{
           headerStyle: { backgroundColor: theme.navBackground },
           headerTintColor: theme.title,
-          animation: "slide_from_left",
         }}
       >
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />

@@ -1,8 +1,8 @@
 import { StyleSheet, useColorScheme } from "react-native";
 import { Tabs } from "expo-router";
 import { Colors } from "../../constants/Colors";
-import { StatusBar } from "expo-status-bar";
 import { Ionicons } from "@expo/vector-icons";
+import UserOnly from "../../components/auth/UserOnly";
 
 const DashboardLayout = () => {
   const colorScheme = useColorScheme();
@@ -11,8 +11,7 @@ const DashboardLayout = () => {
   console.log(colorScheme);
 
   return (
-    <>
-      <StatusBar value="auto" />
+    <UserOnly>
       <Tabs
         screenOptions={{
           headerShown: false,
@@ -65,7 +64,7 @@ const DashboardLayout = () => {
           }}
         />
       </Tabs>
-    </>
+    </UserOnly>
   );
 };
 

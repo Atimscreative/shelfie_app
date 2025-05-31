@@ -3,6 +3,7 @@ import { Stack } from "expo-router";
 // import { Colors } from "../constants/Colors";
 import { StatusBar } from "expo-status-bar";
 import { useUser } from "../../hooks/useUser";
+import GuestOnly from "../../components/auth/GuestOnly";
 
 const AuthLayout = () => {
   // const colorScheme = useColorScheme();
@@ -11,7 +12,7 @@ const AuthLayout = () => {
   // console.log(colorScheme);
 
   return (
-    <>
+    <GuestOnly>
       <StatusBar value="auto" />
       <Stack
         screenOptions={{
@@ -19,7 +20,7 @@ const AuthLayout = () => {
           animation: "none",
         }}
       ></Stack>
-    </>
+    </GuestOnly>
   );
 };
 

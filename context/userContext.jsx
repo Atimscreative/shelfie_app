@@ -6,7 +6,7 @@ export const UserContext = createContext();
 
 export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
-  const [isAuth, setIsAuth] = useState(false);
+  const [authChecked, setAuthChecked] = useState(false);
 
   // LOGIN
   async function login(email, password) {
@@ -42,7 +42,7 @@ export function UserProvider({ children }) {
     } catch (error) {
       setUser(null);
     } finally {
-      setIsAuth(true);
+      setAuthChecked(true);
     }
   }
 
@@ -51,7 +51,7 @@ export function UserProvider({ children }) {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, register, login, logout, isAuth }}>
+    <UserContext.Provider value={{ user, register, login, logout, authChecked }}>
       {children}
     </UserContext.Provider>
   );
